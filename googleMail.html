@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configure demo@chhunmeyling.com in Gmail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6B46C1;
+            --secondary: #9F7AEA;
+            --text: #2d3748;
+            --light: #f8f9fa;
+            --border: #e2e8f0;
+            --success-bg: #E9D8FD;
+            --success-text: #553C9A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #ffffff;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .guide-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .config-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--light);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .config-table th, .config-table td {
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .config-table th {
+            background: var(--primary);
+            color: white;
+        }
+
+        .copy-btn {
+            background: var(--light);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: #EDE9FE;
+        }
+
+        .test-section {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-top: 2rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .success-msg {
+            background: var(--success-bg);
+            color: var(--success-text);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .gmail-btn {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .gmail-btn:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .hero {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Configure demo@chhunmeyling.com in Gmail</h1>
+            <p>Send emails from your custom address using Gmail</p>
+        </div>
+
+        <div class="guide-card">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <h2>Enable IMAP Access</h2>
+            </div>
+            <ol>
+                <li>Log in to your email hosting provider</li>
+                <li>Enable IMAP access in account settings</li>
+                <li>Generate an app-specific password if needed</li>
+            </ol>
+        </div>
+
+        <div class="guide-card">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <h2>Gmail Configuration</h2>
+            </div>
+            <table class="config-table">
+                <tr>
+                    <th>Setting</th>
+                    <th>Value</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>SMTP Server</td>
+                    <td>smtp.chhunmeyling.com</td>
+                    <td><button class="copy-btn" onclick="copyText('smtp.chhunmeyling.com')">Copy</button></td>
+                </tr>
+                <tr>
+                    <td>Port</td>
+                    <td>465 (SSL)</td>
+                    <td><button class="copy-btn" onclick="copyText('465')">Copy</button></td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td>demo@chhunmeyling.com</td>
+                    <td><button class="copy-btn" onclick="copyText('demo@chhunmeyling.com')">Copy</button></td>
+                </tr>
+            </table>
+            
+            <button class="gmail-btn" onclick="openGmailSettings()">
+                <i class="fab fa-google"></i>
+                Open Gmail Settings
+            </button>
+        </div>
+
+        <div class="guide-card">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <h2>Test Configuration</h2>
+            </div>
+            <div class="test-section">
+                <input type="text" class="input-field" id="testSubject" placeholder="Test email subject">
+                <textarea class="input-field" id="testBody" rows="4" placeholder="Test email content"></textarea>
+                <button class="gmail-btn" onclick="sendTestEmail()">
+                    <i class="fas fa-paper-plane"></i>
+                    Send Test Email
+                </button>
+                <div class="success-msg" id="successMessage">
+                    Test email sent successfully! Check your sent items.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyText(text) {
+            navigator.clipboard.writeText(text);
+            alert('Copied: ' + text);
+        }
+
+        function openGmailSettings() {
+            window.open('https://mail.google.com/mail/#settings/general', '_blank');
+        }
+
+        function sendTestEmail() {
+            const subject = document.getElementById('testSubject').value;
+            const body = document.getElementById('testBody').value;
+
+            if (subject && body) {
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('testSubject').value = '';
+                document.getElementById('testBody').value = '';
+                
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+            } else {
+                alert('Please fill in both subject and message fields');
+            }
+        }
+    </script>
+</body>
+</html>
